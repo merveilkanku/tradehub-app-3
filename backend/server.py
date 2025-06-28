@@ -214,7 +214,7 @@ async def get_products(
         supabase = get_supabase()
         query = supabase.table("products").select("""
             *,
-            profiles:supplier_id (full_name, country, city, avatar_base64)
+            profiles:supplier_id (username, first_name, last_name, country, city, avatar_url)
         """)
         
         if category:
