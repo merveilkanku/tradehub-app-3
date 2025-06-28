@@ -10,8 +10,8 @@ from datetime import datetime
 
 # Configuration
 BASE_URL = "https://915b63e0-4ee0-4165-9b78-2b245599c367.preview.emergentagent.com/api"
-TEST_USER_EMAIL = "testuser@example.com"
-TEST_SUPPLIER_EMAIL = "testsupplier@example.com"
+TEST_USER_EMAIL = "user@gmail.com"
+TEST_SUPPLIER_EMAIL = "supplier@gmail.com"
 TEST_PASSWORD = "TestPassword123!"
 
 # Test data
