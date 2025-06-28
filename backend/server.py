@@ -119,18 +119,18 @@ async def signup(user_data: UserCreate):
         })
         
         if response.user:
-            # Create profile in our custom table
+            # Create profile in our custom table - using existing column names
             profile_data = {
                 "id": response.user.id,
-                "email": user_data.email,
-                "full_name": user_data.full_name,
+                "username": user_data.email,  # Use existing username column
+                "first_name": user_data.full_name.split()[0] if user_data.full_name else "",
+                "last_name": " ".join(user_data.full_name.split()[1:]) if len(user_data.full_name.split()) > 1 else "",
                 "phone": user_data.phone,
                 "country": user_data.country,
                 "city": user_data.city,
                 "address": user_data.address,
                 "user_type": user_data.user_type,
-                "avatar_base64": None,
-                "is_supplier_verified": False
+                "avatar_url": None  # Use existing avatar_url column
             }
             
             supabase.table("profiles").insert(profile_data).execute()
