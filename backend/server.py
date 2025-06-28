@@ -20,7 +20,16 @@ def get_supabase() -> Client:
     key = os.getenv("SUPABASE_KEY")
     if not url or not key:
         raise Exception("Supabase credentials not found")
-    return create_client(url, key)
+    try:
+        return create_client(url, key)
+    except TypeError as e:
+        if "unexpected keyword argument 'proxy'" in str(e):
+            # Handle proxy error by setting environment variables
+            os.environ['HTTP_PROXY'] = ''
+            os.environ['HTTPS_PROXY'] = ''
+            # Try again without proxy
+            return create_client(url, key)
+        raise e
 
 # Create the main app
 app = FastAPI(title="TradHub API", version="1.0.0")
