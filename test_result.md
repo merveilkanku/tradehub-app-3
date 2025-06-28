@@ -316,10 +316,14 @@ test_plan:
     - "User Authentication System"
     - "Authentication Pages"
     - "Main App Navigation"
-  stuck_tasks: []
+  stuck_tasks:
+    - "Supabase Integration and Database Setup"
+    - "User Authentication System"
   test_all: false
   test_priority: "high_first"
 
 agent_communication:
     - agent: "main"
       message: "TradHub marketplace application fully implemented with Supabase backend integration. All core features completed including authentication, product management, messaging, search/filters, and dark futuristic UI. Need to test backend connectivity and basic user flows first, then comprehensive frontend testing."
+    - agent: "testing"
+      message: "Backend testing completed. Public endpoints (categories, locations, products) are working correctly. Authentication endpoints are failing due to Supabase configuration issues. Database schema appears to be missing required columns (avatar_base64). Fixed proxy-related errors by downgrading Supabase library from 2.3.4 to 1.0.3. Main agent needs to fix Supabase database schema and authentication configuration."
